@@ -123,6 +123,17 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .left-program-container .button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .left-program-container .button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
         }
         .top-navbar {
             position: fixed;
@@ -243,19 +254,23 @@
             font-size: 24px;
             color: black;
         }
-        .birthday-popup .close-button {
+        .birthday-popup .close-button, .birthday-popup .music-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #FFD700;
             border: none;
             cursor: pointer;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .birthday-popup .music-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #FFD700;
-            border: none;
-            cursor: pointer;
+        .birthday-popup .close-button:hover, .birthday-popup .music-button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .birthday-popup .close-button:active, .birthday-popup .music-button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
         }
         .half-popup {
             position: fixed;
@@ -283,12 +298,40 @@
             background-color: #FFD700;
             border: none;
             cursor: pointer;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .half-popup .close-button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .half-popup .close-button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
         }
         .half-popup-button {
             position: fixed;
             bottom: 50px;
             left: 10px;
             z-index: 9;
+            background-color: #FFD700;
+            color: black;
+            border: 2px solid #FFD700;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .half-popup-button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .half-popup-button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
         }
         .music-play-prompt {
             position: fixed;
@@ -310,18 +353,49 @@
             background-color: #FFD700;
             border: none;
             cursor: pointer;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .open-love-button {
+        .music-play-prompt button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .music-play-prompt button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
+        }
+        .open-love-button, .open-danmu-button, .music-control button {
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .open-love-button:hover, .open-danmu-button:hover, .music-control button:hover {
+            background-color: #FFA500;
+            transform: scale(1.1);
+        }
+        .open-love-button:active, .open-danmu-button:active, .music-control button:active {
+            background-color: #FF4500;
+            transform: scale(1.05);
+        }
+        .danmu {
             position: fixed;
-            bottom: 100px;
-            left: 10px;
-            z-index: 9;
-            background-color: #FFD700;
-            color: black;
-            border: 2px solid #FFD700;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
+            white-space: nowrap;
+            color: #FFD700;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            text-shadow: 1px 1px 2px #000000;
+            animation: moveDanmu 5s linear;
+            z-index: 20;
+        }
+
+        @keyframes moveDanmu {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
         }
         @media (max-width: 768px) {
             .navbar, .top-navbar {
@@ -366,7 +440,7 @@
     <img src="back.png" alt="Photo">
     <canvas id="canvas"></canvas>
     <div class="navbar">
-        <div class="footer-text">Create by Luca-Image by 周欣怡</div>
+        <div class="footer-text">Create by Luca-Image by 周欣怡(⁎⁍̴̛ᴗ⁍̴̛⁎)</div>
     </div>
     <div class="top-navbar">
         <div id="countdown" class="navbar-text"></div>
@@ -377,35 +451,39 @@
     </audio>
     <div id="birthday-popup" class="birthday-popup">
         <div class="message">生日快乐，栗子！</div>
-        <button class="music-button" onclick="playMusic(); closePopup();">播放音乐</button>
-        <button class="close-button" onclick="closePopup()">关闭</button>
+        <button class="music-button" onclick="playMusic(); closePopup();">ᐅ请你听首歌▸🎧︎</button>
+        <button class="close-button" onclick="closePopup()">关闭ฅʕ•̫͡•ʔฅ</button>
     </div>
-    <div id="half-popup" class="half-popup">
-        <div class="message">亲爱的栗子，
+    <div id="half-popup" class="half-popup" style="overflow-y: auto;">
+        <div class="message" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px;">
+            我亲爱的栗子：
 
-            今天是个特别的日子，因为你今天16岁了！虽然我们是在小红书上才刚认识不久，从11月开始成为朋友，但感觉像是认识了很久一样。
+            这世界上有各种各样的人，恰巧我们成为了朋友，这是因为我们有缘分成为朋友，永远的好朋友。
             
-            还记得我们第一次聊天时的情景吗？从分享日常到讨论我们喜欢的音乐、电影，每一次对话都充满了欢笑和共鸣。虽然你经常失踪。
+            今天是个特别的日子，因为你16岁了！虽然我们是在小红书上才刚认识不久，从11月开始成为朋友，但感觉像是认识了很久一样。每一次对话都充满了欢笑和共鸣，虽然你经常失踪。
             
-            16岁，是一个充满希望和梦想的年纪。未来的日子里，希望你能勇敢追求自己的梦想，不断成长，收获更多的快乐和成功。
+            16岁是一个充满希望和梦想的年纪。未来的日子里，希望你能勇敢追求自己的梦想，不断成长，收获更多的快乐和成功。我希望你能够在最好的年纪做最好的自己，永远都能开心，不要委屈自己。岁岁年年很了不起，能相互陪伴就已经很幸运啦。长大之后，期待我们的见面。现在见不了，我还是觉得真正的朋友，在心中的份量并不会因此而减少。
             
-            在这个特别的日子里，我想对你说：谢谢你成为我的朋友。愿你的每一天都像今天一样充满爱与幸福。生日快乐，栗子！
+            希望你每天能伴着温柔月光入睡，清晨被暖暖日光叫醒，就此开启一天的好心情。不多想昨天或明天的烦心事，给自己充满电，吃饱了睡饱了去享受即将到来的明天和生活！
             
-            爱你的朋友
+            愿你的每一天都像今天一样充满爱与幸福。希望你万事如意，寿比南山，福如东海，春满乾坤，福满门。生日快乐，栗子！
             
-            （1月30日）
-            </div>
-        <button class="close-button" onclick="closeHalfPopup()">关闭</button>
+            你的凡翔  
+        </div>
+        <button class="close-button" onclick="closeHalfPopup()">关闭✧ʕ̢̣̣̣̣̩̩̩̩·͡˔· Ɂ̡̣̣̣̣̩̩̩̩✧</button>
     </div>
+    <button class="open-love-button" onclick="openLovePage()" style="position: fixed; top: 10px; right: 10px; z-index: 10; background-color: #FFD700; color: black; border: 2px solid #FFD700; padding: 10px 20px; cursor: pointer; font-size: 16px;">打开有惊喜</button>
     <button id="half-popup-button" class="half-popup-button" onclick="showHalfPopup()">显示弹出框</button>
+    <button class="open-danmu-button" onclick="openDanmuPage()" style="position: fixed; top: 50px; left: 10px; z-index: 10; background-color: #FFD700; color: black; border: 2px solid #FFD700; padding: 10px 20px; cursor: pointer; font-size: 16px;">打开弹幕</button>
     <div id="music-play-prompt" class="music-play-prompt">
         <div>点击按钮以播放背景音乐</div>
-        <button onclick="playMusic(); hideMusicPrompt();">播放音乐</button>
+        <button onclick="playMusic(); hideMusicPrompt();">播放音乐✧ʕ̢̣̣̣̣̩̩̩̩·͡˔· Ɂ̡̣̣̣̣̩̩̩̩✧
+
+        </button>
     </div>
     <div class="music-control">
-        <button id="music-toggle" onclick="toggleMusic()">播放音乐</button>
+        <button id="music-toggle" onclick="toggleMusic()">播放音乐ʕ•ﻌ•ʔ</button>
     </div>
-    <button class="open-love-button" onclick="openLovePage()">打开有惊喜</button>
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -472,7 +550,7 @@
         function playMusic() {
             backgroundMusic.play().then(() => {
                 isPlaying = true;
-                document.getElementById('music-toggle').textContent = '暂停音乐';
+                document.getElementById('music-toggle').textContent = '暂停音乐ฅʕ•̫͡•ʔฅ';
             }).catch(error => {
                 console.log('自动播放被阻止:', error);
             });
@@ -482,7 +560,7 @@
             if (isPlaying) {
                 backgroundMusic.pause();
                 isPlaying = false;
-                document.getElementById('music-toggle').textContent = '播放音乐';
+                document.getElementById('music-toggle').textContent = '播放音乐ˁ˙͡˟˙ˀ';
             } else {
                 playMusic();
             }
@@ -538,7 +616,11 @@
         }
 
         function openLovePage() {
-            window.open('love.html', '_blank');
+            window.location.href = 'love.html';
+        }
+
+        function openDanmuPage() {
+            window.location.href = 'danmu.html';
         }
     </script>
 </body>

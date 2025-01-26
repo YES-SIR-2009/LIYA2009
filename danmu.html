@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小惊喜</title>
+<style>
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+}
+.danmu {
+    position: fixed;
+    white-space: nowrap;
+    color: #FFD700;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 2px #000000;
+    z-index: 999;
+    opacity: 0;
+    animation: fadeInOut 5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { transform: scale(0.5); opacity: 0; }
+    10% { transform: scale(1); opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #FFD700;
+    color: black;
+    border: 2px solid #FFD700;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background-color: #FFA500;
+    transform: scale(1.1);
+}
+
+.back-button:active {
+    background-color: #FF4500;
+    transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+<button class="back-button" onclick="goBack()">返回</button>
+<script>
+function goBack() {
+    window.history.back();
+}
+
+const danmuLines = [
+    "新的一岁不用奔赴大海也能春暖花开。",
+    "愿世界美好与你环环相扣。",
+    "想和你永远好奇又贪玩。",
+    "恭喜你，已经达到16岁一事无成的成就。",
+    "生日快乐，我的女孩。",
+    "愿你永怀善意，清澈明朗。",
+    "愿你永远是公主，梦都被满足。",
+    "要陪在喜欢的人身边，一年又一年。",
+    "愿你被这个世界温柔相待。",
+    "希望你的枕头柔软，也希望你的美梦圆满。",
+    "懂你奇奇怪怪，陪你可可爱爱。",
+    "愿你像孩子一样快乐。",
+    "愿你的生活常温暖，日子总是温柔又闪光。",
+    "生日快乐，蛋糕替你吃了。",
+    "管他几岁，开心万岁。",
+    "愿你崭新的时光通透温热。",
+    "有趣有盼，不负心中热爱。",
+    "生活明朗，万物可爱，你也按时长大。",
+    "乖乖的呆在我身边做我的猪，生日快乐。",
+    "岁岁常欢愉，年年皆胜意。",
+    "但愿这漫长渺小的人生不负你每个光辉时分。",
+    "愿你像风一样自由。",
+    "今天是没有流星也可以许愿的日子。",
+    "故事不长，也不难讲，四字概况，生日快乐。",
+    "愿你变得更好，遇见想见的人。",
+    "愿所得皆所期，所失皆无碍。",
+    "生日快乐，你想要什么，我都买不起。",
+    "祝你快乐，不止生日。",
+    "16岁的你要比15岁更开心噢！",
+    "心仪女孩常驻身边，祝你快乐不止生日。",
+    "心仪女孩常驻身边。",
+    "愿微风不噪时光不老你我都好。",
+    "猪，你快快长!猪，你早日出栏!猪，你生日快乐!",
+    "愿你心中有太阳，眼里溢霞光。",
+    "这个迷人的小东西又要长大一岁了。",
+    "愿你平安喜乐，得偿所愿。",
+    "今天你过生日，但是最美的还是我。",
+    "每过一岁旧布景倒退，但愿绝望和无奈远走高飞。",
+    "生日快乐，愿你往后余生好字当头。",
+    "所有人都祝你生日快乐，那我祝你永远爱我。",
+    "希望以后还能和你一直幼稚下去。",
+    "可爱不是长久之计，要长大才行。",
+    "神说要有光，于是就诞生了你。",
+    "无论多大，都要热爱童话、英雄和魔法。",
+    "一起长大，一起快乐，一起看世界。",
+    "愿你好运连连，生活甜甜。",
+    "都让让都让让，今天我的猪过生日。",
+    "祝你在每个成长的日子里都开开心心。",
+    "祝这世界上最可爱的女孩子生日快乐。",
+    "做自己的盖世英雄，做自己的小公举。",
+    "礼物归你，你归我。",
+    "愿往后的日子里，暴富暴美。",
+    "生辰吉乐，遥叩芳辰。",
+    "愿有前程可奔赴，亦有岁月可回首。",
+    "生活的热闹和骄傲，一个都不少，生日快乐！",
+    "生日快乐，每天都要甜甜的。",
+    "一生被爱，一生可爱。",
+    "愿每一岁都能奔走在自己的热爱里。",
+    "平安喜乐，诸事顺遂。",
+    "做我永远的小仙女，生日快乐。",
+    "希君生羽翼，一化北溟鱼。",
+    "愿你像星星一样努力发光。",
+    "可恶，又陪你老了一岁。",
+    "愿你想要的都得到，得到的都美好。",
+];
+
+function showDanmu(text) {
+    const danmu = document.createElement('div');
+    danmu.className = 'danmu';
+    danmu.textContent = text;
+    danmu.style.top = `${Math.random() * (window.innerHeight - 30)}px`;
+    danmu.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+    document.body.appendChild(danmu);
+
+    setTimeout(() => {
+        danmu.remove();
+    }, 5000);
+}
+
+window.addEventListener('load', () => {
+    let index = 0;
+    setInterval(() => {
+        if (index < danmuLines.length) {
+            showDanmu(danmuLines[index]);
+            index++;
+        }
+    }, 1000);
+});
+</script>
+</body>
+</html>
