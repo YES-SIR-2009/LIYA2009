@@ -48,25 +48,6 @@ canvas {
         font-size: 14px;
     }
 }
-.danmu {
-    position: fixed;
-    white-space: nowrap;
-    color: #FFD700;
-    font-size: 20px;
-    font-family: Arial, sans-serif;
-    text-shadow: 1px 1px 2px #000000;
-    animation: moveDanmu 5s linear;
-    z-index: 20;
-}
-
-@keyframes moveDanmu {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
 </style>
 </head>
 <body>
@@ -530,35 +511,6 @@ var ParticlePool = (function() {
 function goBack() {
     window.history.back();
 }
-
-function fetchDanmu() {
-    fetch('danmu.txt')
-        .then(response => response.text())
-        .then(data => {
-            const danmuLines = data.split('\n').filter(line => line.trim() !== '');
-            danmuLines.forEach((danmuText, index) => {
-                setTimeout(() => {
-                    showDanmu(danmuText);
-                }, index * 1000);
-            });
-        })
-        .catch(error => console.error('无法加载弹幕:', error));
-}
-
-function showDanmu(text) {
-    const danmu = document.createElement('div');
-    danmu.className = 'danmu';
-    danmu.textContent = text;
-    danmu.style.top = `${Math.random() * (window.innerHeight - 30)}px`;
-    document.body.appendChild(danmu);
-    setTimeout(() => {
-        danmu.remove();
-    }, 5000);
-}
-
-window.addEventListener('load', () => {
-    fetchDanmu();
-});
 
 </script>
 
